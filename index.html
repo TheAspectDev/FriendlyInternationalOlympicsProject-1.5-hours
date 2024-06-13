@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS Box Highlighting</title>
+  </head>
+  <body>
+    <div class="grid">
+      <!-- Combination Results -->
+      <a draggable="false" href="#box12" class="box" id="box12">12</a>
+      <a draggable="false" href="#box13" class="box" id="box13">13</a>
+      <a draggable="false" href="#box15" class="box" id="box15">15</a>
+      <a draggable="false" href="#box3" class="box" id="box3">3</a>
+
+      <!-- Combinations -->
+      <a class="box" id="box1">1</a>
+      <a class="box" id="box2">2</a>
+      <a class="box" id="box4">4</a>
+      <a class="box" id="box8">8</a>
+    </div>
+  </body>
+  <style>
+    :root {
+      --selection-color: cadetblue;
+      --comb-color: rgb(238, 184, 123);
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    html,
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgb(33, 36, 43);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    .box {
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      width: 150px;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.507);
+      text-decoration: none;
+      color: white;
+      transition-duration: 500ms;
+      font-size: 50px;
+    }
+
+    #box12:target,
+    #box13:target,
+    #box15:target,
+    #box3:target {
+      background-color: var(--selection-color);
+    }
+    #box12:target ~ #box4,
+    #box12:target ~ #box8 {
+      background-color: var(--comb-color) !important;
+      color: white;
+    }
+    #box13:target ~ #box4,
+    #box13:target ~ #box8,
+    #box13:target ~ #box1 {
+      background-color: var(--comb-color) !important;
+      color: white;
+    }
+    #box15:target ~ #box4,
+    #box15:target ~ #box8,
+    #box15:target ~ #box2,
+    #box15:target ~ #box1 {
+      background-color: var(--comb-color) !important;
+      color: white;
+    }
+    #box3:target ~ #box2,
+    #box3:target ~ #box1 {
+      background-color: var(--comb-color) !important;
+      color: white;
+    }
+  </style>
+</html>

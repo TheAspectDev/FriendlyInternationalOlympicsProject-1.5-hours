@@ -1,0 +1,25 @@
+.number-grid {
+display: flex;
+flex-wrap: wrap;
+}
+
+    
+.number-grid div:active {
+background-color: yellow; /* Highlight color */
+}
+
+.number-grid div:active ~ {  /* Even rows - highlight previous */
+background-color: yellow;
+}
+
+.number-grid div:active ~ ~ { /* Even rows - highlight next (skip middle) */
+background-color: yellow;
+}
+
+.number-grid div:nth-child(odd):active ~ ~ { /* Odd rows - highlight previous twice */
+background-color: yellow;
+}
+
+.number-grid div:nth-child(odd):active ~ { /* Odd rows - highlight previous once more */
+background-color: yellow;
+}
